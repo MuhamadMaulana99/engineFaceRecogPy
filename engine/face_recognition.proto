@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package face;
+
+service FaceRecognition {
+  rpc RegisterFace (RegisterRequest) returns (RegisterReply);
+  rpc RecognizeFace (RecognizeRequest) returns (RecognizeReply);
+}
+
+message RegisterRequest {
+  string name = 1;
+  string image = 2; // base64 encoded image
+}
+
+message RegisterReply {
+  string message = 1;
+  bool success = 2;
+}
+
+message RecognizeRequest {
+  string image = 1; // base64 encoded image
+}
+
+message RecognizeReply {
+  string message = 1;
+  bool success = 2;
+}

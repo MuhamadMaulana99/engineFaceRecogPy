@@ -1,0 +1,1 @@
+INFO:root:Gambar images/ivan5.jpg terlalu blur pada 2025-06-03 10:29:57.981630
