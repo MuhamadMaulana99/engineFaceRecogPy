@@ -21,7 +21,7 @@ class FaceRecognitionServicer(face_recognition_pb2_grpc.FaceRecognitionServicer)
                 raise ValueError("❌ Gambar tidak valid atau gagal didecode")
 
             # Simpan ke folder: engine/images/registered_faces
-            folder_path = os.path.join("engine", "images", "registered_faces")
+            folder_path = os.path.join( "registered_faces")
             os.makedirs(folder_path, exist_ok=True)
             filename = f"{request.name or 'unknown'}_{int(time.time())}.jpg"
             temp_path = os.path.join(folder_path, filename)
@@ -43,7 +43,7 @@ class FaceRecognitionServicer(face_recognition_pb2_grpc.FaceRecognitionServicer)
                 raise ValueError("❌ Gambar tidak valid atau gagal didecode")
 
             # Simpan ke folder: engine/images/recognized_faces
-            folder_path = os.path.join("engine", "images", "recognized_faces")
+            folder_path = os.path.join( "recognized_faces")
             os.makedirs(folder_path, exist_ok=True)
             filename = f"recognized_{int(time.time())}.jpg"
             temp_path = os.path.join(folder_path, filename)

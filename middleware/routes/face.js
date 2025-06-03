@@ -106,14 +106,18 @@ router.post("/recognize", upload.single("photo"), (req, res) => {
       }
 
       const recognizedMessage = response?.message?.toLowerCase() || "";
+      
+      const successKeywords = ["wajah dikenali", "absensi berhasil"];
+      const isSuccess = successKeywords.some(k => recognizedMessage.includes(k));
 
-      if (recognizedMessage.includes("tidak dikenali")) {
+      if (!isSuccess) {
         return res.status(400).json({
           success: false,
-          message: `❌ Wajah tidak dikenali. Jarak dari kantor: ${distance.toFixed(2)} meter.`,
+          message: `❌ ${response.message}. Jarak dari kantor: ${distance.toFixed(2)} meter.`,
           recognized: response,
         });
       }
+
 
       // Lokasi dan wajah valid ✅
       return res.json({
